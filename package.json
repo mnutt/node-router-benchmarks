@@ -1,0 +1,15 @@
+{ "name" :            "node-router-benchmarks",
+  "description" :     "Benchmarks various node routers.",
+  "version" :    "0.0.1",
+  "dependencies": {
+    "barista" : "0.0.2",
+    "choreographer" : "0.2.3a",
+    "clutch" : "0.1.1",
+    "connect" : "1.5.1",
+    "escort" : "0.0.13",
+    "journey" : "0.4.0-pre-2"
+  },
+  "repository" :    { "type" :  "git",
+                      "url" :   "git@github.com:vsharma/imageserver.git" },
+  "engines" :       { "node" : ">=0.4.0" }
+}
