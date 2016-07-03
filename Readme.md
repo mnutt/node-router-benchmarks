@@ -3,15 +3,16 @@ Node.js Router Benchmarks
 
 I have a 6 month old node.js app that was built in a time of fear, uncertainty, and limited server resources.  I thought that we should be squeezing as much as possible out of the single VPS we had, so I ended up using a homegrown regex-based router.  Now that we want to bring some more structure to the app, I started looking at routers and discovered there were a bunch of options.
 
-Methods
+Running all tests
 -------
-
-    npm install
-    node [router-name].js
-    # Single (first) route
-    ab -kc 15 -n 5000 http://127.0.0.1:2048/products/foo
-    # 20th route
-    ab -kc 15 -n 5000 http://127.0.0.1:2048/twenty/foo
+```
+npm install
+./run.sh
+```
+* The tests results will be written in the folder `results-2014`
+* Sample output http://pastebin.com/VA6v4NrR
+* You need to have installed on your system `node` and `wrk`
+* You can install wrk with `brew wrk`
 
 
 barista
@@ -56,18 +57,39 @@ regex
 This is just a really hacky router that loops through regexes.  It's the fastest, but you probably shouldn't use it.
 
 
-Results
--------
+rawhttp
+-----
 
-    router            first route  20th route
-    -----------------------------------------
-    barista           3724         869
-    choreographer     6024         5825
-    clutch            6148         2959
-    connect           5633         5180
-    escort            6098         5946
-    journey           5645         5050
-    regex             6940         6658
+This is just a control benchmark. Its not routing anything
+
+
+light-router
+-----
+
+Waiting for a review :)
+
+
+Results overview
+-------
+```
+Tested on a MacBook Pro 13" 2012 @2,4Ghz i5
+```
+
+```
+router                   first route  20th route
+-----------------------------------------
+barista                  8114.13         2214.44
+choreographer            9470.82         8944.37
+clutch                   8433.79         2332.45
+connect                  7848.29         7227.07
+escort                   8828.66         8622.83
+journey                  4770.10         4423.57
+regex                    11233.89        9814.03
+express                  7697.21         6825.72
+light-router             10414.99        10270.18
+light-router (no-cache)  10502.09        10052.09
+rawhttp                  10887.88        10407.13
+```
 
 
 Conclusions
