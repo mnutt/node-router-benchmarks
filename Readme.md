@@ -1,7 +1,7 @@
 Node.js Router Benchmarks
 =========================
 
-I have a 6 month old node.js app that was built in a time of fear, uncertainty, and limited server resources.  I thought that we should be squeezing as much as possible out of the single VPS we had, so I ended up using a homegrown regex-based router.  Now that we want to bring some more structure to the app, I started looking at routers and discovered there were a bunch of options.
+I have a ~~6 month~~ 5 year old node.js app that was built in a time of fear, uncertainty, and limited server resources.  I thought that we should be squeezing as much as possible out of the single VPS we had, so I ended up using a homegrown regex-based router.  Now that we want to bring some more structure to the app, I started looking at routers and discovered there were a bunch of options.
 
 Running all tests
 -------
@@ -9,11 +9,12 @@ Running all tests
 npm install
 ./run.sh
 ```
-* The tests results will be written in the folder `results-2014`
+* The tests results will be written in the folder `results`
 * Sample output http://pastebin.com/VA6v4NrR
 * You need to have installed on your system `node` and `wrk`
-* You can install wrk with `brew wrk`
-
+* You can install wrk with `brew wrk` or `apt-get install wrk`
+* You can run a single test with `./run.sh [routername]`
+* You can set the duration of each run by setting an environment variable: `DURATION=20s`
 
 barista
 -------
@@ -54,37 +55,38 @@ This is just a really hacky router that loops through regexes.  It's the fastest
 rawhttp
 -----
 
-This is just a control benchmark. Its not routing anything
+This is just a control benchmark. Its not routing anything.
 
 
 light-router
 -----
 
-Waiting for a review :)
+Well-performing router with API similar to others.
 
 
 Results overview
 -------
 ```
-Tested on a MacBook Pro 13" 2012 @2,4Ghz i5
+Tested on a desktop Intel Core i7 4790k.
 ```
 
 ```
-router                   first route  20th route
------------------------------------------
-barista                  8114.13         2214.44
-choreographer            9470.82         8944.37
-clutch                   8433.79         2332.45
-connect                  7848.29         7227.07
-escort                   8828.66         8622.83
-journey                  4770.10         4423.57
-regex                    11233.89        9814.03
-express                  7697.21         6825.72
-light-router             10414.99        10270.18
-light-router (no-cache)  10502.09        10052.09
-rawhttp                  10887.88        10407.13
-```
+              Node v6.2.0     Node v4.4.5     Node v0.10.46   Node 7.0pre (7cbbec516)
+Route number  1st       20th  1st	  20th    1st	  20th    1st	  20th
 
+barista	      23,563  15,494  23,792  13,519  21,937  5,580	  24,109  16,257
+choreographer 33,446  31,633  29,118  27,791  23,869  22,704  29,864  28,415
+clutch	      26,869  20,094  24,902  17,357  22,593  6,270	  27,278  21,387
+connect	      31,260  29,715  28,524  27,407  20,328  19,540  31,702  29,729
+escort	      31,035  31,972  30,063  30,786  23,573  23,724  32,047  32,248
+express	      24,565  23,515  21,468  20,253  20,736  20,001  23,255  22,119
+http-hash	  35,525  35,765  34,341  34,026  36,654  36,598  33,940  34,426
+i40	          35,394  33,602  30,015  28,993  31,679  29,830  32,870  30,271
+light-router  32,679  32,842  31,513  31,740  32,954  33,314  34,072  33,993
+
+regex	      36,907  34,089  36,894  33,977  37,868  34,321  36,477  33,219
+raw http	  38,961  39,331  37,996  38,986  33,610  33,955  39,136  39,575
+```
 
 Conclusions
 -----------
@@ -125,3 +127,5 @@ Some routers, like escort, also keep a cache for dynamic routes that most likely
 Keep in mind that this is a microbenchmark, and as such, the conclusions that can be drawn are limited in scope.  I just wanted to see what sort of request overhead each router added, and how req/s falls off as the number of routes grows.
 
 I think we're going to end up choosing connect + escort.  Many of the routers are pretty close to the regex parsing speed, and connect provides enough other benefits that I think it's worth using on a larger-scale project.
+
+*Update 2016-07-02:* Escort has been abandoned and while I've maintained a fork that keeps it working, it's not a choice I would make now. All of the routers are pretty fast and introduce minimal overhead so at this point I would probably choose the one with a feature set that best fit my needs rather than focusing on performance.
