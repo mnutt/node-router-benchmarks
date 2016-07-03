@@ -6,11 +6,13 @@
     "barista": "*",
     "choreographer": "*",
     "clutch": "*",
-    "connect": "1.5.1",
-    "escort": "*",
+    "connect": "1.5.2",
+      "escort": "*",
+      "http-hash": "*",
     "journey": "*",
     "express": "*",
-    "light-router": "*"
+      "light-router": "*",
+      "i40": "*"
   },
   "repository": {
     "type": "git",
