@@ -45,12 +45,6 @@ escort
 While it's built on top of connect, it replaces and is actually faster than connect's own router. (most likely due to the routing cache)
 
 
-journey
--------
-
-Journey is actually json-only, which makes it less suitable for our purposes.  All of the hoops to jump through aren't worth not having to call JSON.stringify(), especially since it means that you can't return non-json responses.
-
-
 regex
 -----
 
