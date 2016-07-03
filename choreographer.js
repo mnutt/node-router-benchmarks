@@ -1,18 +1,9 @@
 var http = require('http');
+var harness = require('./harness');
+var router = require('choreographer').router();
 
-router = require('choreographer').router();
+harness.addRoutes(function(name, handler) {
+  router.get('/' + name + '/*', handler);
+});
 
-var controller = {
-  get: function(req, res, id) {
-    res.writeHead(200, {});
-    res.end("Got product id " + id);
-  }
-};
-
-var names = ["products", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "twenty"];
-
-for(var i = 0; i < names.length; i++) {
-  router.get('/' + names[i] + '/*', controller.get);
-}
-
-http.createServer(router).listen(2048);
+http.createServer(router).listen(harness.port);

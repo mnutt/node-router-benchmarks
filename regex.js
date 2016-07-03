@@ -1,4 +1,5 @@
 var http = require('http');
+var harness = require('./harness');
 
 var controller = {
   get: function(req, res, id) {
@@ -51,4 +52,4 @@ var server = http.createServer(function(request, response) {
   } else if(params = request.url.match(/^\/twenty\/(.+)$/)) {
     controller.get(request, response, params[1]);
   }
-}).listen(2048);
+}).listen(harness.port);

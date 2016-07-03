@@ -1,18 +1,9 @@
+var http = require('http');
 var router = require('light-router');
+var harness = require('./harness');
 
-var controller = {
-  get: function(req, res) {
-    res.writeHead(200, {});
-    res.end("Got product id " + req.params.id);
-  }
-};
+harness.addRoutes(function(name, handler) {
+  router.get('/' + name + '/:id', handler);
+});
 
-var names = ["products", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "twenty"]
-
-
-for(var i = 0; i < names.length; i++) {
-router.get('/' + names[i] + '/:id', controller.get);
-}
-
-
-require('http').createServer(router).listen(2048);
+http.createServer(router).listen(harness.port);
