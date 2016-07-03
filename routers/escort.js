@@ -1,6 +1,6 @@
 var connect = require('connect');
 var escort = require('escort');
-var harness = require('./harness');
+var harness = require('../harness');
 
 var router = escort(function(routes) {
   harness.addRoutes(function(name, handler) {

@@ -1,16 +1,16 @@
 Running 10s test @ http://127.0.0.1:2048/product/foo
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     0.00us    0.00us   0.00us     nan%
-    Req/Sec     0.00      0.00     0.00       nan%
-  0 requests in 10.03s, 0.00B read
-Requests/sec:      0.00
-Transfer/sec:       0.00B
+    Latency   365.58us  216.26us  11.63ms   98.66%
+    Req/Sec    14.00k     0.90k   14.56k    94.06%
+  281462 requests in 10.10s, 36.77MB read
+Requests/sec:  27867.67
+Transfer/sec:      3.64MB
 Running 10s test @ http://127.0.0.1:2048/twenty/bar
   2 threads and 10 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   402.79us  102.13us   4.75ms   92.88%
-    Req/Sec    12.51k     0.94k   13.31k    90.10%
-  251463 requests in 10.10s, 32.85MB read
-Requests/sec:  24896.93
-Transfer/sec:      3.25MB
+    Latency   397.88us  168.01us  10.51ms   98.11%
+    Req/Sec    12.73k   453.13    13.14k    90.59%
+  255835 requests in 10.10s, 33.18MB read
+Requests/sec:  25331.65
+Transfer/sec:      3.29MB

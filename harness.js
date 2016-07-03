@@ -1,6 +1,6 @@
 exports.makeHandler = function(handlerName) {
   return function handler(req, res, params) {
-    params = req.params || params || {}; // some routers treat this differently
+    params = req.params || params || { id: '' }; // some routers treat this differently
     res.writeHead(200, {});
     var id = params.id || params;
     res.end("Got " + handlerName + " id " + id);

@@ -1,6 +1,6 @@
 var Router = require('barista').Router;
 var http = require('http');
-var harness = require('./harness');
+var harness = require('../harness');
 
 var router = new Router();
 

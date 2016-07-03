@@ -1,6 +1,6 @@
 var http = require('http');
 var clutch = require('clutch');
-var harness = require('./harness');
+var harness = require('../harness');
 
 var routeList = [];
 

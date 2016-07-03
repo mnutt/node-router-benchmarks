@@ -1,5 +1,5 @@
 var http = require('http');
-var harness = require('./harness');
+var harness = require('../harness');
 
 var controller = {
   get: function(req, res, id) {

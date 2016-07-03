@@ -1,5 +1,5 @@
 var express = require('express');
-var harness = require('./harness');
+var harness = require('../harness');
 
 var app = express();
 

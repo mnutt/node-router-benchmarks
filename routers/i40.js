@@ -1,6 +1,6 @@
 var Router = require('i40');
 var http = require('http');
-var harness = require('./harness');
+var harness = require('../harness');
 
 var router = Router();
 

@@ -1,5 +1,5 @@
 var http = require('http');
-var harness = require('./harness');
+var harness = require('../harness');
 var router = require('choreographer').router();
 
 harness.addRoutes(function(name, handler) {
