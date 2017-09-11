@@ -64,6 +64,12 @@ light-router
 Well-performing router with API similar to others.
 
 
+find-my-way
+-----
+
+A "crazy fast HTTP router", internally uses an highly performant Radix Tree.
+
+
 Results overview
 -------
 ```
