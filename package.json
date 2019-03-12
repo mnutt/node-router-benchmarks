@@ -8,12 +8,13 @@
     "clutch": "*",
     "connect": "1.5.2",
     "escort": "*",
-    "http-hash": "*",
-    "journey": "*",
     "express": "*",
-    "light-router": "*",
+    "find-my-way": "*",
+    "http-hash": "*",
     "i40": "*",
-    "find-my-way": "*"
+    "journey": "*",
+    "light-router": "*",
+    "sea-lion": "^2.0.2"
   },
   "repository": {
     "type": "git",
